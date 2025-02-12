@@ -192,25 +192,26 @@ class FlappyBird(context: Context) : ContextListener(context) {
                             text = "Best Score: $best"
                         }
                     }
-                }
 
-                textureRect {
-                    anchorTop = 1f
-                    anchorBottom = 1f
-                    anchorRight = 1f
+                    textureRect {
+                        anchorTop = 1f
+                        anchorBottom = 1f
+                        anchorRight = 1f
 
-                    marginBottom = -50f
-                    slice = startButton
-                    stretchMode = TextureRect.StretchMode.KEEP_CENTERED
+                        marginBottom = -50f
+                        slice = startButton
+                        stretchMode = TextureRect.StretchMode.KEEP_CENTERED
 
-                    onUiInput += {
-                        if (gameOver) {
-                            if (it.type == InputEvent.Type.TOUCH_DOWN) {
-                                reset()
+                        onUiInput += {
+                            if (gameOver) {
+                                if (it.type == InputEvent.Type.TOUCH_DOWN) {
+                                    reset()
+                                }
                             }
                         }
                     }
                 }
+
             }
 
             centerContainer {
@@ -583,7 +584,7 @@ private class Pipe(
     private val pipeBody: TextureSlice,
     private val offsetX: Int,
     private val availableHeight: Int,
-    private val groundOffset: Int
+    private val groundOffset: Int,
 ) : EnvironmentObject(pipeBody.width, 0, true) {
     private var pipeTopHeight = 0f
     private var pipeBottomHeight = 0f
